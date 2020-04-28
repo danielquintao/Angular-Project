@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 import { Movie } from '../movie';
 import{ Director } from '../director';
 import { Studio } from '../studio';
@@ -22,10 +23,13 @@ export class MovieDetailComponent implements OnInit {
   @Input() directorInfo: Director;
   @Input() studioInfo: Studio;
   @Input() actorsInfo: Actor[];
+  @Input() genresInfo: Genre[];
   @Input() directors: Director[];
   @Input() studios: Studio[];
   @Input() actors: Actor[];
   @Input() genres: Genre[];
+
+  @Output() updateDisplayedInfo2 = new EventEmitter<boolean>();
 
   constructor(private route: ActivatedRoute, private movieService: MovieService, private location: Location) {}
 
@@ -52,6 +56,7 @@ export class MovieDetailComponent implements OnInit {
     }
     this.movieService.associateMovieDirector(movieAndDirector)
       .subscribe();
+    this.updateDisplayedInfo2.emit(true); // update parent view
   }
 
   registerStudio(selectedStudioID: string): void {
@@ -62,26 +67,45 @@ export class MovieDetailComponent implements OnInit {
     }
     this.movieService.associateMovieStudio(movieAndStudio)
       .subscribe();
+    this.updateDisplayedInfo2.emit(true); // update parent view
   }
 
   registerActor(selectedActorID: string): void {
-    const id= +selectedActorID;
     let movieAndActor : {movie:number, actor:number} = {
       movie: this.movie.id,
       actor: +selectedActorID
     }
     this.movieService.associateMovieActor(movieAndActor)
       .subscribe();
+    this.updateDisplayedInfo2.emit(true); // update parent view
   }
 
   registerGenre(selectedGenreID: string): void {
-    const id= +selectedGenreID;
     let movieAndGenre : {movie:number, genre:number} = {
       movie: this.movie.id,
       genre: +selectedGenreID
     }
     this.movieService.associateMovieGenre(movieAndGenre)
       .subscribe();
+    this.updateDisplayedInfo2.emit(true); // update parent view
+  }
+
+  unassociateActor(actorId: string): void {
+    let movieAndActor : {movie:number, actor:number} = {
+      movie: this.movie.id,
+      actor: +actorId
+    }
+    this.movieService.unassociateActor(movieAndActor).subscribe();
+    this.updateDisplayedInfo2.emit(true); // update parent view
+  }
+
+  unassociateGenre(genreId: string): void {
+    let movieAndGenre : {movie:number, genre:number} = {
+      movie: this.movie.id,
+      genre: +genreId
+    }
+    this.movieService.unassociateGenre(movieAndGenre).subscribe();
+    this.updateDisplayedInfo2.emit(true); // update parent view
   }
 
 }

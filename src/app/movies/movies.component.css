@@ -1,8 +1,20 @@
+button.delete {
+    position: relative;
+    left: 27.5em;
+}
+
+button.clear {
+    position: fixed;
+    top: 55em;
+    right: 26em;
+}
+
 div.selected {
     background-color: brown;
-    width: 25em;
+    width: 26em;
     border-radius: 4px;
     padding: 1em;
+    margin: 0.5em;
 }
 
 div.not-selected {
@@ -10,6 +22,7 @@ div.not-selected {
     width: 25em;
     border-radius: 4px;
     padding: 1em;
+    margin: 0.5em;
 }
 
 li {
@@ -21,7 +34,7 @@ li {
     position: fixed;
     right: 7em;
     top: 7em;
-    height: 30em;
+    height: 40em;
     width: 30em;
     padding: 1em;
     border-radius: 4px;
@@ -33,7 +46,7 @@ li {
     position: fixed;
     right: 42em;
     top: 7em;
-    height: 30em;
+    height: 40em;
     width: 25em;
     padding: 1em;
     border-radius: 4px;

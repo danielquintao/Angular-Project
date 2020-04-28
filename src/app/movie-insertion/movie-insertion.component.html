@@ -13,7 +13,13 @@
     <button (click)="addDirector(directorName.value); directorName.value=''"> add </button>
 </div>
 
-<!-- ADD REMOVE BUTTON --><!-- ADD REMOVE BUTTON --><!-- ADD REMOVE BUTTON -->
+<div>
+  <label for="directors">Remove existing director:</label>
+  <select #selectedDirectorID>
+    <option *ngFor="let director of directors" [value]="director.id"> {{ director.name }} </option>
+  </select>
+  <button (click)="deleteDirector(selectedDirectorID.value); selectedDirectorID.value=''">remove</button>
+</div>
 
 <div>
     <label>insert new studio :
@@ -23,8 +29,24 @@
 </div>
 
 <div>
+  <label for="studios">Remove existing studio:</label>
+  <select #selectedStudioID>
+    <option *ngFor="let studio of studios" [value]="studio.id"> {{ studio.name }} </option>
+  </select>
+  <button (click)="deleteStudio(selectedStudioID.value); selectedStudioID.value=''">remove</button>
+</div>
+
+<div>
     <label>insert new actor :
       <input placeholder="actor name" #actorName />
     </label>
     <button (click)="addActor(actorName.value); actorName.value=''"> add </button>
+</div>
+
+<div>
+  <label for="actors">Remove existing actor:</label>
+  <select #selectedActorID>
+    <option *ngFor="let actor of actors" [value]="actor.id"> {{ actor.name }} </option>
+  </select>
+  <button (click)="deleteActor(selectedActorID.value); selectedActorID.value=''">remove</button>
 </div>

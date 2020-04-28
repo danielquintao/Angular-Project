@@ -90,6 +90,13 @@ export class MovieService {
     );
   }
 
+  getGenresInformation(id: number): Observable<Genre[]> {
+    return this.http.get<Genre[]>(`http://localhost:3000/getmovieinfo-genres/${id}`).pipe(
+      tap(_ => this.log(`fetched movie genres info id=${id}`)),
+      catchError(this.handleError<Genre[]>(`getMovieInformation id=${id}`))
+    );
+  }
+
   updateMovie(movie: Movie): Observable<any> {
     return this.http.put('http://localhost:3000/putmovie', movie, this.httpOptions).pipe(
       tap(_ => this.log(`updated movie id=${movie.id}`)),
@@ -158,6 +165,48 @@ export class MovieService {
     return this.http.delete<Movie>(`http://localhost:3000/deletemovie/${id}`, this.httpOptions).pipe(
       tap(_ => this.log(`deleted movie id=${id}`)),
       catchError(this.handleError<Movie>('deleteMovie'))
+    );
+  }
+
+  deleteDirector(director: Director | number): Observable<Director> {
+    const id = typeof director === 'number' ? director : director.id;
+    return this.http.delete<Director>(`http://localhost:3000/deletedirector/${id}`, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted director id=${id}`)),
+      catchError(this.handleError<Director>('deleteDirector'))
+    );
+  }
+
+  deleteStudio(studio: Studio | number): Observable<Studio> {
+    const id = typeof studio === 'number' ? studio : studio.id;
+    return this.http.delete<Studio>(`http://localhost:3000/deletestudio/${id}`, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted studio id=${id}`)),
+      catchError(this.handleError<Studio>('deleteStudio'))
+    );
+  }
+
+  deleteActor(actor: Actor | number): Observable<Actor> {
+    const id = typeof actor === 'number' ? actor : actor.id;
+    return this.http.delete<Actor>(`http://localhost:3000/deleteactor/${id}`, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted actor id=${id}`)),
+      catchError(this.handleError<Actor>('deleteActor'))
+    );
+  }
+
+  unassociateActor(movieAndActor: {movie:number, actor:number}): Observable<{movie:number, actor:number}> {
+    const movie_id = movieAndActor.movie;
+    const actor_id = movieAndActor.actor;
+    return this.http.delete<{movie:number, actor:number}>(`http://localhost:3000/unassociate-movie-and-actor/${movie_id}/${actor_id}`, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted association between movie=${movie_id} and actor=${actor_id}`)),
+      catchError(this.handleError<{movie:number, actor:number}>('unassociateMovieAndActor'))
+    );
+  }
+
+  unassociateGenre(movieAndGenre: {movie:number, genre:number}): Observable<{movie:number, genre:number}> {
+    const movie_id = movieAndGenre.movie;
+    const genre_id = movieAndGenre.genre;
+    return this.http.delete<{movie:number, genre:number}>(`http://localhost:3000/unassociate-movie-and-genre/${movie_id}/${genre_id}`, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted association between movie=${movie_id} and genre=${genre_id}`)),
+      catchError(this.handleError<{movie:number, genre:number}>('unassociateMovieAndActor'))
     );
   }
 

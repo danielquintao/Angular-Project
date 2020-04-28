@@ -300,6 +300,20 @@ router.get('/getmovieinfo-studio/:keyword', function (req, res, next) {
   );
  });
 
+ router.get('/getmovieinfo-genres/:keyword', function (req, res, next) { 
+  db.query(
+    'SELECT g.* FROM genres g, movies_genres m_g, movies m WHERE (g.id = m_g.genre_id) AND (m.id = m_g.movie_id) AND (m.id = ?)', [req.params.keyword],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        res.status(500).json({status: 'error'});
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+ });
+
   router.put("/putmovie", function (req, res, next) {
     db.query(
        'UPDATE movies SET name = ? WHERE id = ?', [req.body.name, req.body.id],
@@ -316,6 +330,71 @@ router.get('/getmovieinfo-studio/:keyword', function (req, res, next) {
   router.delete('/deletemovie/:id', function (req, res, next) {
     db.query(
       'DELETE FROM movies WHERE id = ?', [req.params.id],
+      (error) => {
+        if (error) {
+          res.status(500).json({status: 'error'});
+        } else {
+          res.status(200).json({status: 'ok'});
+        }
+      }
+    );
+  });
+
+  router.delete('/deletedirector/:id', function (req, res, next) {
+    db.query(
+      'DELETE FROM directors WHERE id = ?', [req.params.id],
+      (error) => {
+        if (error) {
+          res.status(500).json({status: 'error'});
+        } else {
+          res.status(200).json({status: 'ok'});
+        }
+      }
+    );
+  });
+
+  router.delete('/deletestudio/:id', function (req, res, next) {
+    db.query(
+      'DELETE FROM studios WHERE id = ?', [req.params.id],
+      (error) => {
+        if (error) {
+          res.status(500).json({status: 'error'});
+        } else {
+          res.status(200).json({status: 'ok'});
+        }
+      }
+    );
+  });
+
+  router.delete('/deleteactor/:id', function (req, res, next) {
+    db.query(
+      'DELETE FROM actors WHERE id = ?', [req.params.id],
+      (error) => {
+        if (error) {
+          res.status(500).json({status: 'error'});
+        } else {
+          res.status(200).json({status: 'ok'});
+        }
+      }
+    );
+  });
+
+  router.delete('/unassociate-movie-and-actor/:movie_id/:actor_id', function (req, res, next) {
+    db.query(
+      'DELETE FROM movies_actors WHERE movie_id = ? AND actor_id = ?', [req.params.movie_id, req.params.actor_id],
+      (error) => {
+        if (error) {
+          res.status(500).json({status: 'error'});
+        } else {
+          res.status(200).json({status: 'ok'});
+        }
+      }
+    );
+  });
+
+  router.delete('/unassociate-movie-and-genre/:movie_id/:genre_id', function (req, res, next) {
+    db.query(
+      'DELETE FROM movies_genres WHERE movie_id = ? AND genre_id = ?', [req.params.movie_id, req.params.genre_id],
       (error) => {
         if (error) {
           res.status(500).json({status: 'error'});

@@ -25,12 +25,14 @@ export class MoviesComponent implements OnInit {
   directorInfo: Director; // director of selectedMovie, if  existing (otherwise selectedMovie.director_id does not tell us the director name)
   studioInfo: Studio;
   actorsInfo: Actor[];
+  genresInfo: Genre[];
 
   onSelect(movie: Movie): void {
     this.selectedMovie = movie;
     this.getDirectorInformation();
     this.getStudioInformation();
     this.getActorsInformation();
+    this.getGenresInformation();
   }
   selectNone(): void {
     this.selectedMovie = null;
@@ -40,13 +42,25 @@ export class MoviesComponent implements OnInit {
     this.movieService.getMovies().subscribe(movies => this.movies = movies); // waits for the observable movieService.getMovies()
   }
 
+  //updateSelectedMovie(): void {
+  //  this.movieService.getMovie(this.selectedMovie.id)
+  //    .subscribe(movie => this.selectedMovie = movie[0]);
+  //  this.getDirectorInformation();
+  //  this.getStudioInformation();
+  //  this.getActorsInformation();
+  //  this.getGenresInformation();
+  //}
+
   getDirectorInformation(): void {
     this.directorInfo = { // we need to "clean" the variable (otherwise the template may not update this value when we select a movie with no director)
       id: -1,
       name: ''
     };
     this.movieService.getDirectorInformation(this.selectedMovie.id)
-      .subscribe(directorInfo => this.directorInfo = directorInfo[0]);
+      .subscribe(directorInfo => {
+        if(directorInfo.length != 0)
+          this.directorInfo = directorInfo[0];
+        });
   }
 
   getStudioInformation(): void {
@@ -55,13 +69,22 @@ export class MoviesComponent implements OnInit {
       name: ''
     };
     this.movieService.getStudioInformation(this.selectedMovie.id)
-      .subscribe(studioInfo => this.studioInfo = studioInfo[0]);
+      .subscribe(studioInfo => {
+        if(studioInfo.length != 0)
+         this.studioInfo = studioInfo[0];
+        });
   }
 
   getActorsInformation(): void {
     this.actorsInfo = [];
     this.movieService.getActorsInformation(this.selectedMovie.id)
       .subscribe(actorsInfo =>  this.actorsInfo = actorsInfo); // this time, no "[0]" because we have indeed an array of row results 
+  }
+
+  getGenresInformation(): void {
+    this.genresInfo = [];
+    this.movieService.getGenresInformation(this.selectedMovie.id)
+      .subscribe(genresInfo =>  this.genresInfo = genresInfo); // this time, no "[0]" because we have indeed an array of row results 
   }
 
   getDirectors(): void {
@@ -85,6 +108,21 @@ export class MoviesComponent implements OnInit {
     this.movies = this.movies.filter(m => m !== movie); // this.movies won't refresh
   }
  
+  // when MovieInsertion adds data to or removes data from the database, we'll tell the main view to refresh the lists actors, directors etc :
+  refreshAll(value: boolean): void {
+    this.getMovies();
+    this.getDirectors();
+    this.getStudios();
+    this.getActors();
+    this.getGenres();
+    // update selectedMovie :
+    //this.updateSelectedMovie();
+    this.getDirectorInformation();
+    this.getStudioInformation();
+    this.getActorsInformation();
+    this.getGenresInformation();
+  }
+
   constructor(private movieService: MovieService, private messageService: MessageService) { }
 
   ngOnInit(): void {

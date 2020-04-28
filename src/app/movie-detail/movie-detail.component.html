@@ -1,10 +1,14 @@
 <div *ngIf="movie">
     <h2>{{movie.name}}</h2>
-    <h3>{{directorInfo.name}}</h3>
-    <h4>Studio: {{studioInfo.name}}</h4>
+    <h4>Director: {{directorInfo.name}}</h4> <button *ngIf="directorInfo.name" (click)="registerDirector('null')">unassociate</button>
+    <h4>Studio: {{studioInfo.name}}</h4> <button *ngIf="studioInfo.name" (click)="registerStudio('null')">unassociate</button>
     <h4>Actors:</h4>
     <ul>
-      <li *ngFor="let actor of actorsInfo">{{actor.name}}</li>
+      <li *ngFor="let actor of actorsInfo">{{actor.name}} <button (click)="unassociateActor(actor.id)">unassociate</button></li>
+    </ul>
+    <h4>Associated genres:</h4>
+    <ul>
+      <li *ngFor="let genre of genresInfo">{{genre.name}} <button (click)="unassociateGenre(genre.id)">unassociate</button></li> 
     </ul>
     
     <div><span>id: </span>{{movie.id}}</div>
