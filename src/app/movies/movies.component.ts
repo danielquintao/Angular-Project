@@ -6,7 +6,6 @@ import { Studio } from '../studio';
 import { Actor } from '../actor';
 import { Genre } from '../genre';
 import { MovieService } from '../movie.service';
-import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-movies',
@@ -115,15 +114,14 @@ export class MoviesComponent implements OnInit {
     this.getStudios();
     this.getActors();
     this.getGenres();
-    // update selectedMovie :
-    //this.updateSelectedMovie();
+
     this.getDirectorInformation();
     this.getStudioInformation();
     this.getActorsInformation();
     this.getGenresInformation();
   }
 
-  constructor(private movieService: MovieService, private messageService: MessageService) { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.getMovies(); // so as getMovies() is called after the construction of a MoviesComponent instance 
