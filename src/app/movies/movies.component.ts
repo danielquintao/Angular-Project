@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Movie } from '../movie';
+import{ Director } from '../director';
+import { Studio } from '../studio';
+import { Actor } from '../actor';
+import { Genre } from '../genre';
 import { MovieService } from '../movie.service';
 import { MessageService } from '../message.service';
 
@@ -12,25 +16,83 @@ import { MessageService } from '../message.service';
 export class MoviesComponent implements OnInit {
 
   movies: Movie[];
-  
+  directors: Director[];
+  studios: Studio[];
+  actors: Actor[];
+  genres: Genre[];
+
+  selectedMovie: Movie;
+  directorInfo: Director; // director of selectedMovie, if  existing (otherwise selectedMovie.director_id does not tell us the director name)
+  studioInfo: Studio;
+  actorsInfo: Actor[];
+
+  onSelect(movie: Movie): void {
+    this.selectedMovie = movie;
+    this.getDirectorInformation();
+    this.getStudioInformation();
+    this.getActorsInformation();
+  }
+  selectNone(): void {
+    this.selectedMovie = null;
+  }
+
   getMovies(): void {
     this.movieService.getMovies().subscribe(movies => this.movies = movies); // waits for the observable movieService.getMovies()
   }
 
-  /*
-  showConfig() {
-    this.configService.getConfig()
-      .subscribe((data: Config) => this.config = {
-          heroesUrl: data['heroesUrl'],
-          textfile:  data['textfile']
-      });
+  getDirectorInformation(): void {
+    this.directorInfo = { // we need to "clean" the variable (otherwise the template may not update this value when we select a movie with no director)
+      id: -1,
+      name: ''
+    };
+    this.movieService.getDirectorInformation(this.selectedMovie.id)
+      .subscribe(directorInfo => this.directorInfo = directorInfo[0]);
   }
-  */
+
+  getStudioInformation(): void {
+    this.studioInfo = {
+      id: -1,
+      name: ''
+    };
+    this.movieService.getStudioInformation(this.selectedMovie.id)
+      .subscribe(studioInfo => this.studioInfo = studioInfo[0]);
+  }
+
+  getActorsInformation(): void {
+    this.actorsInfo = [];
+    this.movieService.getActorsInformation(this.selectedMovie.id)
+      .subscribe(actorsInfo =>  this.actorsInfo = actorsInfo); // this time, no "[0]" because we have indeed an array of row results 
+  }
+
+  getDirectors(): void {
+    this.movieService.getDirectors().subscribe(directors => this.directors = directors); // waits for the observable movieService.getMovies()
+  }
+
+  getStudios(): void {
+    this.movieService.getStudios().subscribe(studios => this.studios = studios); // waits for the observable movieService.getMovies()
+  }
+
+  getActors(): void {
+    this.movieService.getActors().subscribe(actors => this.actors = actors); // waits for the observable movieService.getMovies()
+  }
+
+  getGenres(): void {
+    this.movieService.getGenres().subscribe(genres => this.genres = genres); // waits for the observable movieService.getMovies()
+  }
+
+  delete(movie: Movie): void {
+    this.movieService.deleteMovie(movie).subscribe();
+    this.movies = this.movies.filter(m => m !== movie); // this.movies won't refresh
+  }
  
   constructor(private movieService: MovieService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getMovies(); // so as getMovies() is called after the construction of a MoviesComponent instance 
+    this.getDirectors();
+    this.getStudios();
+    this.getActors();
+    this.getGenres();
   }
 
 }

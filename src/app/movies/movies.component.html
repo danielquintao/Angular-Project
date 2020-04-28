@@ -1,8 +1,31 @@
 <h2>Added movies and series:</h2>
+<app-movie-search></app-movie-search>
 <ul class="movies">
-  <li *ngFor="let movie of movies">
-    <a routerLink="/detail/{{movie.id}}">
-      <span>{{movie.id}}</span> {{movie.name}}
-    </a>
+  <li *ngFor="let movie of movies" (click)="onSelect(movie)">
+    <!-- show small description if movie not selected -->
+    <div *ngIf="selectedMovie != movie" class="not-selected">
+      <h3>{{movie.name}}</h3>
+      <button class="delete" title="delete movie" (click)="delete(movie)">x</button>
+      <a routerLink="/detail/{{movie.id}}"> Details ...</a>
+    </div>
+    <!-- show bigger description if movie selected -->
+    <div *ngIf="selectedMovie == movie" class="selected">
+      <h3>{{movie.name}}</h3>
+      <h4>Director : {{movie.director}} </h4>
+      <button class="delete" title="delete movie" (click)="delete(movie)">x</button>
+      <a routerLink="/detail/{{movie.id}}"> Details ...</a>
+    </div>
   </li>
 </ul>
+
+<div id="insertion-frame">
+  <h2>Insert more information:</h2>
+  <app-movie-insertion [movies]="movies" [directors]="directors" [studios]="studios" [actors]="actors"></app-movie-insertion>
+</div>
+
+<div id="detail-main-frame">
+  <h2>Movie details :</h2>
+  <app-movie-detail [movie]="selectedMovie" [directors]="directors" [studios]="studios" [actors]="actors" [genres]="genres" [directorInfo]="directorInfo" [studioInfo]="studioInfo" [actorsInfo]="actorsInfo"></app-movie-detail>
+  <button class="clear" (click)="selectNone()">clear</button>
+</div>
+

@@ -1,0 +1,30 @@
+<div>
+    <label>insert new movie :
+      <input placeholder="movie name" #movieName />
+    </label>
+    <button (click)="addMovie(movieName.value); movieName.value=''"> add </button>
+</div>
+
+
+<div>
+    <label>insert new director :
+      <input placeholder="director name" #directorName />
+    </label>
+    <button (click)="addDirector(directorName.value); directorName.value=''"> add </button>
+</div>
+
+<!-- ADD REMOVE BUTTON --><!-- ADD REMOVE BUTTON --><!-- ADD REMOVE BUTTON -->
+
+<div>
+    <label>insert new studio :
+      <input placeholder="studio name" #studioName />
+    </label>
+    <button (click)="addStudio(studioName.value); studioName.value=''"> add </button>
+</div>
+
+<div>
+    <label>insert new actor :
+      <input placeholder="actor name" #actorName />
+    </label>
+    <button (click)="addActor(actorName.value); actorName.value=''"> add </button>
+</div>

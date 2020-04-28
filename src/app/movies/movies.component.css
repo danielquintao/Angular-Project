@@ -1,0 +1,42 @@
+div.selected {
+    background-color: brown;
+    width: 25em;
+    border-radius: 4px;
+    padding: 1em;
+}
+
+div.not-selected {
+    background-color: chocolate;
+    width: 25em;
+    border-radius: 4px;
+    padding: 1em;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+#detail-main-frame {
+    position: fixed;
+    right: 7em;
+    top: 7em;
+    height: 30em;
+    width: 30em;
+    padding: 1em;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: crimson;
+}
+
+#insertion-frame {
+    position: fixed;
+    right: 42em;
+    top: 7em;
+    height: 30em;
+    width: 25em;
+    padding: 1em;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: crimson;
+}
