@@ -1,0 +1,14 @@
+button {
+    background-color: #393E41;
+    color: #86A5D9;
+    border-radius: 0.8em;
+}
+
+input {
+    width: 90%;
+    height : 1.5em;
+    margin-top: 2em;
+    color: #393E41;
+    background-color: #C5D1EB;
+    border-radius: 0.8em;
+}

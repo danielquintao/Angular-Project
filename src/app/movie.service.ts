@@ -53,14 +53,6 @@ export class MovieService {
       catchError(this.handleError<Genre[]>('getGenres', []))
     );
   }
-  
-  getMovie(id: number): Observable<Movie> {
-    const url = `http://localhost:3000/${id}`;
-    return this.http.get<Movie>(url).pipe(
-      tap(_ => console.log(`fetched movie id=${id}`)),
-      catchError(this.handleError<Movie>(`getMovie id=${id}`))
-    );
-  }
 
   getDirectorInformation(id: number): Observable<Director[]> {
     return this.http.get<Director[]>(`http://localhost:3000/getmovieinfo-director/${id}`).pipe(
@@ -225,7 +217,7 @@ export class MovieService {
   }
 
   searchMovies(term: string): Observable<Movie[]> {
-    //if (!term.trim()) {
+    //if (!term.trim()) {     // uncomment if we want no results when advancedSearch searchBox is blank
        //if not search term, return empty movie array.
       //return of([]);
     //}
@@ -235,12 +227,6 @@ export class MovieService {
     );
   }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

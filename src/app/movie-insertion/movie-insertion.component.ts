@@ -5,8 +5,8 @@ import { Director } from '../director';
 import { Studio } from '../studio';
 import { Actor } from '../actor';
 
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+// import { ActivatedRoute } from '@angular/router';
+// import { Location } from '@angular/common';
 
 import { MovieService }  from '../movie.service';
 
@@ -24,12 +24,14 @@ export class MovieInsertionComponent implements OnInit {
 
   @Output() updateDisplayedInfo = new EventEmitter<boolean>();
 
+  constructor(private movieService: MovieService) {}
+
   addMovie(name: string): void {
     name = name.trim();
     if (!name) { return; } // blank name
     this.movieService.addMovie({ name } as Movie)
       .subscribe();
-    this.updateDisplayedInfo.emit(true); // update parent view
+    this.updateDisplayedInfo.emit(true); 
   }
 
   addDirector(name: string): void {
@@ -37,22 +39,22 @@ export class MovieInsertionComponent implements OnInit {
     if (!name) { return; } // blank name
     this.movieService.addDirector({ name } as Director)
       .subscribe();
-    this.updateDisplayedInfo.emit(true); // update parent view
+    this.updateDisplayedInfo.emit(true);
   }
 
   deleteDirector(directorId: string): void {
     this.movieService.deleteDirector(+directorId).subscribe();
-    this.updateDisplayedInfo.emit(true); // update parent view
+    this.updateDisplayedInfo.emit(true); 
   }
 
   deleteStudio(studioId: string): void {
     this.movieService.deleteStudio(+studioId).subscribe();
-    this.updateDisplayedInfo.emit(true); // update parent view
+    this.updateDisplayedInfo.emit(true); 
   }
 
   deleteActor(actorId: string): void {
     this.movieService.deleteActor(+actorId).subscribe();
-    this.updateDisplayedInfo.emit(true); // update parent view
+    this.updateDisplayedInfo.emit(true); 
   }
 
   addStudio(name: string): void {
@@ -60,7 +62,7 @@ export class MovieInsertionComponent implements OnInit {
     if (!name) { return; } // blank name
     this.movieService.addStudio({ name } as Studio)
       .subscribe();
-    this.updateDisplayedInfo.emit(true); // update parent view
+    this.updateDisplayedInfo.emit(true); 
   }
 
   addActor(name: string): void {
@@ -68,7 +70,7 @@ export class MovieInsertionComponent implements OnInit {
     if (!name) { return; } // blank name
     this.movieService.addActor({ name } as Actor)
       .subscribe();
-    this.updateDisplayedInfo.emit(true); // update parent view
+    this.updateDisplayedInfo.emit(true); 
   }
 
   newDirectorName: string;
@@ -97,8 +99,6 @@ export class MovieInsertionComponent implements OnInit {
     this.newActorName = '';
     this.updateDisplayedInfo.emit(true);
   }
-
-  constructor(private route: ActivatedRoute, private movieService: MovieService, private location: Location) {}
 
   ngOnInit(): void {
   }

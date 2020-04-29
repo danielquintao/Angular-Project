@@ -1,2 +1,3 @@
 <input #searchQuery id="search-box"/>
 <button (click)="search(searchQuery.value); searchQuery.value=''">Go</button> 
+<button (click)="searchQuery.value=''; search(searchQuery.value)">Restore complete list</button>

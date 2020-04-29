@@ -1,7 +1,7 @@
 <div class="detail-frame" *ngIf="movie">
     <h2>{{movie.name}}</h2>
-    <h4>Director: {{directorInfo.name}}</h4> <button *ngIf="directorInfo.name" (click)="registerDirector('null')">dissociate</button>
-    <h4>Studio: {{studioInfo.name}}</h4> <button *ngIf="studioInfo.name" (click)="registerStudio('null')">dissociate</button>
+    <div class="field"><h4>Director: {{directorInfo.name}}</h4></div> <button *ngIf="directorInfo.name" (click)="registerDirector('null')">dissociate</button>
+    <div class="field"><h4>Studio: {{studioInfo.name}}</h4></div> <button *ngIf="studioInfo.name" (click)="registerStudio('null')">dissociate</button>
     <h4>Actors:</h4>
     <ul>
       <li *ngFor="let actor of actorsInfo">{{actor.name}} <button (click)="unassociateActor(actor.id)">dissociate</button></li>

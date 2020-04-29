@@ -6,8 +6,8 @@ import { Studio } from '../studio';
 import { Actor } from '../actor';
 import { Genre } from '../genre';
 
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+//import { ActivatedRoute } from '@angular/router';
+//import { Location } from '@angular/common';
 
 import { MovieService }  from '../movie.service';
 
@@ -31,21 +31,11 @@ export class MovieDetailComponent implements OnInit {
 
   @Output() updateDisplayedInfo2 = new EventEmitter<boolean>();
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService, private location: Location) {}
-
-  ngOnInit(): void {
-
-  }
+  constructor(private movieService: MovieService) {}
   
-  getMovie(): void {
-    const id = +this.route.snapshot.paramMap.get('id'); // + -> conversion to number type
-    this.movieService.getMovie(id)
-      .subscribe(movie => this.movie = movie);
-  }
-
   save(): void {
     this.movieService.updateMovie(this.movie)
-      .subscribe(); //.subscribe(() => this.goBack());
+      .subscribe();
   }
 
   registerDirector(selectedDirectorID: string): void {
@@ -67,7 +57,7 @@ export class MovieDetailComponent implements OnInit {
     }
     this.movieService.associateMovieStudio(movieAndStudio)
       .subscribe();
-    this.updateDisplayedInfo2.emit(true); // update parent view
+    this.updateDisplayedInfo2.emit(true); 
   }
 
   registerActor(selectedActorID: string): void {
@@ -77,7 +67,7 @@ export class MovieDetailComponent implements OnInit {
     }
     this.movieService.associateMovieActor(movieAndActor)
       .subscribe();
-    this.updateDisplayedInfo2.emit(true); // update parent view
+    this.updateDisplayedInfo2.emit(true); 
   }
 
   registerGenre(selectedGenreID: string): void {
@@ -87,7 +77,7 @@ export class MovieDetailComponent implements OnInit {
     }
     this.movieService.associateMovieGenre(movieAndGenre)
       .subscribe();
-    this.updateDisplayedInfo2.emit(true); // update parent view
+    this.updateDisplayedInfo2.emit(true); 
   }
 
   unassociateActor(actorId: string): void {
@@ -96,7 +86,7 @@ export class MovieDetailComponent implements OnInit {
       actor: +actorId
     }
     this.movieService.unassociateActor(movieAndActor).subscribe();
-    this.updateDisplayedInfo2.emit(true); // update parent view
+    this.updateDisplayedInfo2.emit(true); 
   }
 
   unassociateGenre(genreId: string): void {
@@ -105,7 +95,11 @@ export class MovieDetailComponent implements OnInit {
       genre: +genreId
     }
     this.movieService.unassociateGenre(movieAndGenre).subscribe();
-    this.updateDisplayedInfo2.emit(true); // update parent view
+    this.updateDisplayedInfo2.emit(true); 
+  }
+
+  ngOnInit(): void {
+
   }
 
 }

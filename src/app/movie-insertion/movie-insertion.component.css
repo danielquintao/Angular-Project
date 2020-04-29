@@ -1,18 +1,18 @@
 button {
-    background-color: #E94F37;
+    background-color: #86A5D9;
     color: #393E41;
     border-radius: 0.8em;
 }
 
 hr {
-    background-color: #E94F37;;
+    background-color: #86A5D9;;
     height: 0.05em;
-    border-color: #E94F37;
+    border-color: #86A5D9;
 }
 
 
 input {
-    background-color: #E94F37;
+    background-color: #C5D1EB;
     color: #393E41;
     border-radius: 0.8em;
 }
@@ -30,9 +30,10 @@ input {
 }
 
 select {
-    background-color: #E94F37;
+    background-color: #C5D1EB;
     color: #393E41;
     border-radius: 0.8em;
+    width: 12em;
 }
 
 div.inner-div {
@@ -78,10 +79,6 @@ div.smaller-input {
 div.button {
     float: left;
     width: 16%;
-}
-
-select {
-    width: 12em;
 }
 
 select.smaller-select {

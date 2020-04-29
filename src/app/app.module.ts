@@ -7,16 +7,14 @@ import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { MovieInsertionComponent } from './movie-insertion/movie-insertion.component';
-import { MovieAdvancedSearchComponent } from './movie-advanced-search/movie-advanced-search.component'; /////
+import { MovieAdvancedSearchComponent } from './movie-advanced-search/movie-advanced-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
     MovieDetailComponent,
-    MovieSearchComponent,
     MovieInsertionComponent,
     MovieAdvancedSearchComponent
   ],
@@ -24,7 +22,7 @@ import { MovieAdvancedSearchComponent } from './movie-advanced-search/movie-adva
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+   AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

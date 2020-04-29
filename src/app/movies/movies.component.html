@@ -4,7 +4,7 @@
   <li *ngFor="let movie of movies" (click)="onSelect(movie)">
     <!-- show small description if movie not selected -->
     <div *ngIf="selectedMovie != movie" class="not-selected">
-      <button class="delete" title="delete movie" (click)="delete(movie)"><b>X</b></button>
+      <button class="delete non-selected" title="delete movie" (click)="delete(movie)"><b>X</b></button>
       <h2>{{movie.name}}</h2>
       <!--a routerLink="/detail/{{movie.id}}"> Details ...</a-->
     </div>

@@ -3,33 +3,42 @@ button.delete {
     left: 27.5em;
 }
 
-button.clear {
-    position: fixed;
-    top: 55em;
-    right: 26em;
-    color: #E94F37;
-}
 
 button {
-    background-color: lavenderblush;
-    color: #393E41;;
+    background-color: #86A5D9;
+    color: #393E41;
+    border-radius: 0.8em;
+}
+
+button.non-selected {
+    background-color: #393E41;
+    color: #86A5D9;
+    border-radius: 0.8em;
+}
+
+button.clear {
+    position: absolute;
+    bottom: 1em;
+    left: 45%;
 }
 
 div.selected {
     background-color: #393E41;
-    color: #E94F37;
+    color: #86A5D9;
     width: 25.5em;
-    border-radius: 4px;
+    height: 5em;
+    border-radius: 8px;
     padding: 1em;
     margin: 0.5em;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 div.not-selected {
-    background-color: #E94F37;
+    background-color: #86A5D9;
     color: #393E41;
     width: 25em;
-    border-radius: 4px;
+    height: 5em;
+    border-radius: 8px;
     padding: 1em;
     margin: 0.5em;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -47,50 +56,50 @@ li {
 
 #empty-list-warning {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    color: #E94F37;
+    color: #86A5D9;
 }
 
 #detail-main-frame {
     position: fixed;
-    right: 7em;
+    right: 4em;
     top: 9em;
     height: 40em;
     width: 30em;
     padding: 1em;
-    border-radius: 4px;
+    border-radius: 16px;
     border-style: solid;
-    border-color: #E94F37;
-    color: #E94F37;
+    border-color: #86A5D9;
+    color: #86A5D9;
     background-color: #393E41;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #insertion-frame {
     position: fixed;
-    right: 42em;
+    right: 39em;
     top: 9em;
     height:25em;
     width: 25em;
     padding: 1em;
-    border-radius: 4px;
+    border-radius: 16px;
     border-style: solid;
-    border-color: #E94F37;
-    color: #E94F37;
+    border-color: #86A5D9;
+    color: #86A5D9;
     background-color: #393E41;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #advanced-search-frame {
     position: fixed;
-    right: 42em;
+    right: 39em;
     top: 37em;
     height: 12em;
     width: 25em;
     padding: 1em;
-    border-radius: 4px;
+    border-radius: 16px;
     border-style: solid;
-    border-color: #E94F37;
-    color: #E94F37;
-    background-color: #393E41;
+    border-color:  #86A5D9;
+    color: #393E41;
+    background-color: #86A5D9;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }

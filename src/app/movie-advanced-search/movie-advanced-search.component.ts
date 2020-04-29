@@ -10,11 +10,11 @@ export class MovieAdvancedSearchComponent implements OnInit {
 
   @Output() advancedSearch = new EventEmitter<string>();
 
+  constructor() { }
+
   search(query: string) {
     this.advancedSearch.emit(query);
   }
-
-  constructor() { }
 
   ngOnInit(): void {
   }
