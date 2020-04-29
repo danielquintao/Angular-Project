@@ -1,6 +1,6 @@
-<h2>Added movies and series:</h2>
-<app-movie-search></app-movie-search>
+<!--app-movie-search></app-movie-search-->
 <ul class="movies">
+  <div id="empty-list-warning" *ngIf="movies.length == 0"><h2>No movies</h2></div>
   <li *ngFor="let movie of movies" (click)="onSelect(movie)">
     <!-- show small description if movie not selected -->
     <div *ngIf="selectedMovie != movie" class="not-selected">
@@ -23,9 +23,14 @@
 </div>
 
 <div id="detail-main-frame">
-  <h2>Movie details :</h2>
+  <h2>Movie details:</h2>
   <app-movie-detail [movie]="selectedMovie" [directors]="directors" [studios]="studios" [actors]="actors" [genres]="genres" [directorInfo]="directorInfo"
   [studioInfo]="studioInfo" [actorsInfo]="actorsInfo" [genresInfo]="genresInfo" (updateDisplayedInfo2)="refreshAll($event)"></app-movie-detail>
   <button class="clear" (click)="selectNone()"><b>clear</b></button>
+</div>
+
+<div id="advanced-search-frame">
+  <h2>Advanced Search:</h2>
+  <app-movie-advanced-search (advancedSearch)="filterMovies($event)"></app-movie-advanced-search>
 </div>
 

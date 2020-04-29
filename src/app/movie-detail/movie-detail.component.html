@@ -1,14 +1,14 @@
 <div class="detail-frame" *ngIf="movie">
     <h2>{{movie.name}}</h2>
-    <h4>Director: {{directorInfo.name}}</h4> <button *ngIf="directorInfo.name" (click)="registerDirector('null')">remove association</button>
-    <h4>Studio: {{studioInfo.name}}</h4> <button *ngIf="studioInfo.name" (click)="registerStudio('null')">remove association</button>
+    <h4>Director: {{directorInfo.name}}</h4> <button *ngIf="directorInfo.name" (click)="registerDirector('null')">dissociate</button>
+    <h4>Studio: {{studioInfo.name}}</h4> <button *ngIf="studioInfo.name" (click)="registerStudio('null')">dissociate</button>
     <h4>Actors:</h4>
     <ul>
-      <li *ngFor="let actor of actorsInfo">{{actor.name}} <button (click)="unassociateActor(actor.id)">remove association</button></li>
+      <li *ngFor="let actor of actorsInfo">{{actor.name}} <button (click)="unassociateActor(actor.id)">dissociate</button></li>
     </ul>
     <h4>Associated genres:</h4>
     <ul>
-      <li *ngFor="let genre of genresInfo">{{genre.name}} <button (click)="unassociateGenre(genre.id)">remove association</button></li> 
+      <li *ngFor="let genre of genresInfo">{{genre.name}} <button (click)="unassociateGenre(genre.id)">dissociate</button></li> 
     </ul>
     
     <!-------------------------------------------------------------------------------------------------------->
@@ -20,7 +20,7 @@
       <h4>Editions on the movie:</h4>
 
       <div>
-        <div class="label"><label>name:</label></div>
+        <div class="label"><label>Change name:</label></div>
         <div class="input"><input [(ngModel)]="movie.name" placeholder="name"/></div>
         <div class="button"><button (click)="save()">save</button></div>
       </div>

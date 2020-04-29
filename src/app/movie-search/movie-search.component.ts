@@ -14,9 +14,15 @@ import { MovieService } from '../movie.service';
 })
 export class MovieSearchComponent implements OnInit {
   movies$: Observable<Movie[]>;
-  private searchTerms = new Subject<string>();
+  private searchTerms = new Subject<string>(); // Subject is also an observable!!!
+
+  advancedSearchOn: boolean;
 
   constructor(private movieService: MovieService) {}
+
+  switchAdvancedSearchStatus() {
+    this.advancedSearchOn = !this.advancedSearchOn;
+  }
 
   // Push a search term into the observable stream.
   search(term: string): void {
@@ -24,7 +30,7 @@ export class MovieSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.advancedSearchOn = false;
     this.movies$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
@@ -35,5 +41,6 @@ export class MovieSearchComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.movieService.searchMovies(term)),
     );
+    this.search(' ');//// triggering movies just after initiation 
   }
 }

@@ -203,11 +203,32 @@ export class MovieService {
     );
   }
 
+  renameDirector(director: Director): Observable<Director> {
+    return this.http.put<Director>('http://localhost:3000/rename_director', director, this.httpOptions).pipe(
+      tap((director: Director) => console.log(`updated director`)),
+      catchError(this.handleError<Director>('updateDirector'))
+    );
+  }
+
+  renameStudio(studio: Studio): Observable<Studio> {
+    return this.http.put<Studio>('http://localhost:3000/rename_studio', studio, this.httpOptions).pipe(
+      tap((studio: Studio) => console.log(`updated studio`)),
+      catchError(this.handleError<Studio>('updateStudio'))
+    );
+  }
+
+  renameActor(actor: Actor): Observable<Actor> {
+    return this.http.put<Actor>('http://localhost:3000/rename_actor', actor, this.httpOptions).pipe(
+      tap((actor: Actor) => console.log(`updated actor`)),
+      catchError(this.handleError<Actor>('updateActor'))
+    );
+  }
+
   searchMovies(term: string): Observable<Movie[]> {
-    if (!term.trim()) {
-      // if not search term, return empty movie array.
-      return of([]);
-    }
+    //if (!term.trim()) {
+       //if not search term, return empty movie array.
+      //return of([]);
+    //}
     return this.http.get<Movie[]>(`http://localhost:3000/getmovies/${term}`).pipe(
       tap(x => x.length ? console.log(`found movies matching "${term}"`) : console.log(`no movie matching "${term}"`)),
       catchError(this.handleError<Movie[]>('searchMovies', []))

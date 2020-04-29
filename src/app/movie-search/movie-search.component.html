@@ -2,10 +2,16 @@
     <h4><label for="search-box">Advanced Search</label></h4>
   
     <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    <!--input #searchBox id="search-box" [(ngModule)]="search(searchBox.value)" /-->
   
-    <ul class="search-result">
-      <li *ngFor="let movie of movies$ | async" > <!--movies$ is an angular observable-->
-        {{movie.name}}
+    <ul class="search-result" *ngIf="advancedSearchOn">
+      <li *ngFor="let movie of movies$ | async"> <!--movies$ is an angular observable-->
+        <span>{{movie.name}}</span>
       </li>
     </ul>
+
+    <button (click)="switchAdvancedSearchStatus(); searchBox.value=''"> 
+      <span *ngIf="advancedSearchOn">turn advanced search off</span>
+      <span *ngIf="!advancedSearchOn">turn advanced search on</span>
+    </button>
   </div>

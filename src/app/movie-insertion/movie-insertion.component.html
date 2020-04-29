@@ -59,3 +59,34 @@
 </div>
 
 <hr>
+
+<div class="updates">
+
+  <div class="inner-div">
+    <div class="smaller-label"><label for="directors">Rename director:</label></div>
+    <div class="smaller-input"><select class="smaller-select" #selectedDirectorIDForUpdate>
+      <option *ngFor="let director of directors" [value]="director.id"> {{ director.name }} </option>
+    </select></div>
+    <div class="smaller-input"><input class="smaller-input-field" [(ngModel)]="newDirectorName"></div>
+    <div class="button"><button (click)="renameDirector(selectedDirectorIDForUpdate.value)">rename</button></div>
+  </div>
+
+  <div class="inner-div">
+    <div class="smaller-label"><label for="studios">Rename studio:</label></div>
+    <div class="smaller-input"><select class="smaller-select" #selectedStudioIDForUpdate>
+      <option *ngFor="let studio of studios" [value]="studio.id"> {{ studio.name }} </option>
+    </select></div>
+    <div class="smaller-input"><input class="smaller-input-field" [(ngModel)]="newStudioName"></div>
+    <div class="button"><button (click)="renameStudio(selectedStudioIDForUpdate.value)">rename</button></div>
+  </div>
+
+  <div class="inner-div">
+    <div class="smaller-label"><label for="actors">Rename actor:</label></div>
+    <div class="smaller-input"><select class="smaller-select" #selectedActorIDForUpdate>
+      <option *ngFor="let actor of actors" [value]="actor.id"> {{ actor.name }} </option>
+    </select></div>
+    <div class="smaller-input"><input class="smaller-input-field" [(ngModel)]="newActorName"></div>
+    <div class="button"><button (click)="renameActor(selectedActorIDForUpdate.value)">rename</button></div>
+  </div>
+
+</div>

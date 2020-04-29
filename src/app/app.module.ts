@@ -8,7 +8,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
-import { MovieInsertionComponent } from './movie-insertion/movie-insertion.component'; /////
+import { MovieInsertionComponent } from './movie-insertion/movie-insertion.component';
+import { MovieAdvancedSearchComponent } from './movie-advanced-search/movie-advanced-search.component'; /////
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MovieInsertionComponent } from './movie-insertion/movie-insertion.compo
     MoviesComponent,
     MovieDetailComponent,
     MovieSearchComponent,
-    MovieInsertionComponent
+    MovieInsertionComponent,
+    MovieAdvancedSearchComponent
   ],
   imports: [
     BrowserModule,

@@ -71,6 +71,33 @@ export class MovieInsertionComponent implements OnInit {
     this.updateDisplayedInfo.emit(true); // update parent view
   }
 
+  newDirectorName: string;
+  renameDirector(id: string) {
+    if(!this.newDirectorName.trim()) return;
+    let director: Director = {id: +id, name: this.newDirectorName};
+    this.movieService.renameDirector(director).subscribe();
+    this.newDirectorName = '';
+    this.updateDisplayedInfo.emit(true);
+  }
+
+  newStudioName: string;
+  renameStudio(id: string) {
+    if(!this.newStudioName.trim()) return;
+    let studio: Studio = {id: +id, name: this.newStudioName};
+    this.movieService.renameStudio(studio).subscribe();
+    this.newStudioName = '';
+    this.updateDisplayedInfo.emit(true);
+  }
+
+  newActorName: string;
+  renameActor(id: string) {
+    if(!this.newActorName.trim()) return;
+    let actor: Actor = {id: +id, name: this.newActorName};
+    this.movieService.renameActor(actor).subscribe();
+    this.newActorName = '';
+    this.updateDisplayedInfo.emit(true);
+  }
+
   constructor(private route: ActivatedRoute, private movieService: MovieService, private location: Location) {}
 
   ngOnInit(): void {

@@ -121,6 +121,11 @@ export class MoviesComponent implements OnInit {
     this.getGenresInformation();
   }
 
+  filterMovies(query: string) {
+    this.movieService.searchMovies(query).subscribe(filteredMovies => this.movies = filteredMovies);
+    this.selectNone();
+  }
+
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {

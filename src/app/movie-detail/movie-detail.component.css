@@ -1,6 +1,7 @@
 div.detail-frame {
     font-size: small;
     margin: 0;
+    color: #E94F37;
 }
 
 div.label {
@@ -19,20 +20,24 @@ div.button {
 }
 
 hr {
-    background-color: #5B2333;
+    background-color: #E94F37;;
     height: 0.05em;
+    border-color: #E94F37;
 }
 
 button {
-    background-color: lavenderblush;
-    color: #5B2333;
+    background-color: #E94F37;
+    color: #393E41;
     border-radius: 0.8em;
 }
 
 input {
     border-radius: 0.8em;
+    color: #E94F37;
 }
 
 select {
+    background-color: #E94F37;
+    color: #393E41;
     border-radius: 0.8em;
 }

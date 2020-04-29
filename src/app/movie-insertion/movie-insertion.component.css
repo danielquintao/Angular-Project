@@ -1,20 +1,37 @@
 button {
-    background-color: lavenderblush;
-    color: #5B2333;
+    background-color: #E94F37;
+    color: #393E41;
     border-radius: 0.8em;
 }
 
 hr {
-    background-color: #5B2333;
+    background-color: #E94F37;;
     height: 0.05em;
+    border-color: #E94F37;
 }
 
 
 input {
+    background-color: #E94F37;
+    color: #393E41;
     border-radius: 0.8em;
 }
 
+::-moz-placeholder {
+    color: #393E41;
+}
+
+::-webkit-input-placeholder {
+    color: #393E41;
+}
+
+::placeholder {
+    color: #393E41;
+}
+
 select {
+    background-color: #E94F37;
+    color: #393E41;
     border-radius: 0.8em;
 }
 
@@ -24,28 +41,38 @@ div.inner-div {
 }
 
 div.movie-insert {
-    margin-top: 4em;
-    margin-bottom: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 div.other-inserts {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 div.removals {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 div.label {
     float: left;
-    width: 42%;
+    width: 41%;
+}
+
+div.smaller-label {
+    float: left;
+    width: 34%;
 }
 
 div.input {
     float: left;
-    width: 42%; 
+    width: 43%; 
+}
+
+div.smaller-input {
+    float: left;
+    width: 25%;
 }
 
 div.button {
@@ -53,3 +80,14 @@ div.button {
     width: 16%;
 }
 
+select {
+    width: 12em;
+}
+
+select.smaller-select {
+    width: 7em;
+}
+
+input.smaller-input-field {
+    width: 6em;
+}

@@ -82,6 +82,45 @@ function createRouter(db) {
     );
   });
 
+  router.put('/rename_director', (req, res, next) => {
+    db.query('UPDATE directors SET name = ? WHERE id = ?', [req.body.name, req.body.id],
+      (error) => {
+        if (error) {
+          console.error(error);
+          res.status(500).json({status: 'error'});
+        } else {
+          res.status(200).json({status: 'ok'});
+        }
+      }
+    );
+  });
+
+  router.put('/rename_studio', (req, res, next) => {
+    db.query('UPDATE studios SET name = ? WHERE id = ?', [req.body.name, req.body.id],
+      (error) => {
+        if (error) {
+          console.error(error);
+          res.status(500).json({status: 'error'});
+        } else {
+          res.status(200).json({status: 'ok'});
+        }
+      }
+    );
+  });
+
+  router.put('/rename_actor', (req, res, next) => {
+    db.query('UPDATE actors SET name = ? WHERE id = ?', [req.body.name, req.body.id],
+      (error) => {
+        if (error) {
+          console.error(error);
+          res.status(500).json({status: 'error'});
+        } else {
+          res.status(200).json({status: 'ok'});
+        }
+      }
+    );
+  });
+
   router.post('/associate_movie_and_actor', (req, res, next) => {
     db.query('INSERT INTO movies_actors (movie_id, actor_id) VALUES (?, ?)', [req.body.movie, req.body.actor],
       (error) => {
