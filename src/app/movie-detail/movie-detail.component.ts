@@ -65,9 +65,14 @@ export class MovieDetailComponent implements OnInit {
       movie: this.movie.id,
       actor: +selectedActorID
     }
-    this.movieService.associateMovieActor(movieAndActor)
-      .subscribe();
-    this.updateDisplayedInfo2.emit(true); 
+    this.movieService.getMovieActorPair(movieAndActor).subscribe(movieActorPair => {
+      if(movieActorPair.length == 0) {
+        this.movieService.associateMovieActor(movieAndActor)
+          .subscribe();
+        this.updateDisplayedInfo2.emit(true); 
+      }
+      else return;
+    });
   }
 
   registerGenre(selectedGenreID: string): void {
@@ -75,9 +80,14 @@ export class MovieDetailComponent implements OnInit {
       movie: this.movie.id,
       genre: +selectedGenreID
     }
-    this.movieService.associateMovieGenre(movieAndGenre)
-      .subscribe();
-    this.updateDisplayedInfo2.emit(true); 
+    this.movieService.getMovieGenrePair(movieAndGenre).subscribe(movieGenrePair => {
+      if(movieGenrePair.length == 0) {
+        this.movieService.associateMovieGenre(movieAndGenre)
+          .subscribe();
+        this.updateDisplayedInfo2.emit(true); 
+      }
+      else return;
+    });
   }
 
   unassociateActor(actorId: string): void {

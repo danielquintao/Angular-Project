@@ -298,6 +298,32 @@ router.get('/getgenres/:keyword?', function (req, res, next) {
 
 });
 
+router.get('/getmovie-actor-pair/:movie_id/:actor_id', function (req, res, next) {
+   db.query('SELECT * FROM movies_actors WHERE movie_id = ? AND actor_id = ?', [req.params.movie_id, req.params.actor_id],
+     (error, results) => {
+       if (error) {
+         console.log(error);
+         res.status(500).json({status: 'error'});
+       } else {
+         res.status(200).json(results);
+       }
+     }
+   );
+});
+
+router.get('/getmovie-genre-pair/:movie_id/:genre_id', function (req, res, next) {
+  db.query('SELECT * FROM movies_genres WHERE movie_id = ? AND genre_id = ?', [req.params.movie_id, req.params.genre_id],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        res.status(500).json({status: 'error'});
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
 router.get('/getmovieinfo-director/:keyword', function (req, res, next) { 
  db.query(
    'SELECT d.* FROM directors d, movies m WHERE (d.id = m.director_id) AND (m.id = ?)', [req.params.keyword],

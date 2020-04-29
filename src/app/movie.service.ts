@@ -54,6 +54,20 @@ export class MovieService {
     );
   }
 
+  getMovieActorPair({movie, actor}): Observable<Array<{movie:number, actor:number}> > {
+    return this.http.get<Array<{movie:number, actor:number}> >(`http://localhost:3000/getmovie-actor-pair/${movie}/${actor}`).pipe(
+      tap(_ => console.log('fetched pair')),
+      catchError(this.handleError<Array<{movie:number, actor:number}> >('getPairs', []))
+    );
+  }
+
+  getMovieGenrePair({movie, genre}): Observable<Array<{movie:number, genre:number}> > {
+    return this.http.get<Array<{movie:number, genre:number}> >(`http://localhost:3000/getmovie-genre-pair/${movie}/${genre}`).pipe(
+      tap(_ => console.log('fetched pair')),
+      catchError(this.handleError<Array<{movie:number, genre:number}> >('getPairs', []))
+    );
+  }
+
   getDirectorInformation(id: number): Observable<Director[]> {
     return this.http.get<Director[]>(`http://localhost:3000/getmovieinfo-director/${id}`).pipe(
       tap(_ => console.log(`fetched movie director info id=${id}`)),
