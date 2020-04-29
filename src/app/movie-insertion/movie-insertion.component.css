@@ -1,0 +1,55 @@
+button {
+    background-color: lavenderblush;
+    color: #5B2333;
+    border-radius: 0.8em;
+}
+
+hr {
+    background-color: #5B2333;
+    height: 0.05em;
+}
+
+
+input {
+    border-radius: 0.8em;
+}
+
+select {
+    border-radius: 0.8em;
+}
+
+div.inner-div {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+div.movie-insert {
+    margin-top: 4em;
+    margin-bottom: 2em;
+}
+
+div.other-inserts {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+div.removals {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+div.label {
+    float: left;
+    width: 42%;
+}
+
+div.input {
+    float: left;
+    width: 42%; 
+}
+
+div.button {
+    float: left;
+    width: 16%;
+}
+

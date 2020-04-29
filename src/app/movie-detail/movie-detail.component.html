@@ -1,54 +1,62 @@
-<div *ngIf="movie">
+<div class="detail-frame" *ngIf="movie">
     <h2>{{movie.name}}</h2>
-    <h4>Director: {{directorInfo.name}}</h4> <button *ngIf="directorInfo.name" (click)="registerDirector('null')">unassociate</button>
-    <h4>Studio: {{studioInfo.name}}</h4> <button *ngIf="studioInfo.name" (click)="registerStudio('null')">unassociate</button>
+    <h4>Director: {{directorInfo.name}}</h4> <button *ngIf="directorInfo.name" (click)="registerDirector('null')">remove association</button>
+    <h4>Studio: {{studioInfo.name}}</h4> <button *ngIf="studioInfo.name" (click)="registerStudio('null')">remove association</button>
     <h4>Actors:</h4>
     <ul>
-      <li *ngFor="let actor of actorsInfo">{{actor.name}} <button (click)="unassociateActor(actor.id)">unassociate</button></li>
+      <li *ngFor="let actor of actorsInfo">{{actor.name}} <button (click)="unassociateActor(actor.id)">remove association</button></li>
     </ul>
     <h4>Associated genres:</h4>
     <ul>
-      <li *ngFor="let genre of genresInfo">{{genre.name}} <button (click)="unassociateGenre(genre.id)">unassociate</button></li> 
+      <li *ngFor="let genre of genresInfo">{{genre.name}} <button (click)="unassociateGenre(genre.id)">remove association</button></li> 
     </ul>
     
-    <div><span>id: </span>{{movie.id}}</div>
-    
-    <div>
-      <label>name:
-        <input [(ngModel)]="movie.name" placeholder="name"/>
-      </label>
-      <button (click)="save()">save</button>
-    </div>
+    <!-------------------------------------------------------------------------------------------------------->
+    <hr>
 
-    <div>
-      <label for="directors">Associate director:</label>
-      <select #selectedDirectorID>
-        <option *ngFor="let director of directors" [value]="director.id"> {{ director.name }} </option>
-      </select>
-      <button (click)="registerDirector(selectedDirectorID.value)">register</button>
-    </div>
 
-    <div>
-      <label for="studios">Associate studio:</label>
-      <select #selectedStudioID>
-        <option *ngFor="let studio of studios" [value]="studio.id"> {{ studio.name }} </option>
-      </select>
-      <button (click)="registerStudio(selectedStudioID.value)">register</button>
-    </div>
+    <div class="edition">
 
-    <div>
-      <label for="actors">Associate actor:</label>
-      <select #selectedActorID>
-        <option *ngFor="let actor of actors" [value]="actor.id"> {{ actor.name }} </option>
-      </select>
-      <button (click)="registerActor(selectedActorID.value)">register</button> <!--TODO-->
-    </div>
+      <h4>Editions on the movie:</h4>
 
-    <div>
-      <label for="genres">Associate genre:</label>
-      <select #selectedGenreID>
-        <option *ngFor="let genre of genres" [value]="genre.id"> {{ genre.name }} </option>
-      </select>
-      <button (click)="registerGenre(selectedGenreID.value)">register</button> <!--TODO-->
-    </div>
+      <div>
+        <div class="label"><label>name:</label></div>
+        <div class="input"><input [(ngModel)]="movie.name" placeholder="name"/></div>
+        <div class="button"><button (click)="save()">save</button></div>
+      </div>
+
+      <div>
+        <div class="label"><label for="directors">Associate director:</label></div>
+        <div class="input"><select #selectedDirectorID>
+          <option *ngFor="let director of directors" [value]="director.id"> {{ director.name }} </option>
+        </select></div>
+        <div class="button"><button (click)="registerDirector(selectedDirectorID.value)">register</button></div>
+      </div>
+
+      <div>
+        <div class="label"><label for="studios">Associate studio:</label></div>
+        <div class="input"><select #selectedStudioID>
+          <option *ngFor="let studio of studios" [value]="studio.id"> {{ studio.name }} </option>
+        </select></div>
+        <div class="button"><button (click)="registerStudio(selectedStudioID.value)">register</button></div>
+      </div>
+
+      <div>
+        <div class="label"><label for="actors">Associate actor:</label></div>
+        <div class="input"><select #selectedActorID>
+          <option *ngFor="let actor of actors" [value]="actor.id"> {{ actor.name }} </option>
+        </select></div>
+        <div class="button"><button (click)="registerActor(selectedActorID.value)">register</button></div>
+      </div>
+
+      <div>
+        <div class="label"><label for="genres">Associate genre:</label></div>
+        <div class="input"><select #selectedGenreID>
+          <option *ngFor="let genre of genres" [value]="genre.id"> {{ genre.name }} </option>
+        </select></div>
+        <div class="button"><button (click)="registerGenre(selectedGenreID.value)">register</button></div>
+      </div>
+
+  </div>
+
 </div>

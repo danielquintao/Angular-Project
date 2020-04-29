@@ -1,5 +1,8 @@
 div.title-frame {
-    color: khaki;
-    background-color: crimson;
+    color: #F6F7EB;
+    background-color: #E94F37;
     height: 4em;
+    padding: 1em;
+    font-size: large;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }

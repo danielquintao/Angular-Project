@@ -1,0 +1,38 @@
+div.detail-frame {
+    font-size: small;
+    margin: 0;
+}
+
+div.label {
+    float: left;
+    width: 42%;
+}
+
+div.input {
+    float: left;
+    width: 42%; 
+}
+
+div.button {
+    float: left;
+    width: 16%;
+}
+
+hr {
+    background-color: #5B2333;
+    height: 0.05em;
+}
+
+button {
+    background-color: lavenderblush;
+    color: #5B2333;
+    border-radius: 0.8em;
+}
+
+input {
+    border-radius: 0.8em;
+}
+
+select {
+    border-radius: 0.8em;
+}

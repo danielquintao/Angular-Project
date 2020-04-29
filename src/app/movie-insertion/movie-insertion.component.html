@@ -1,52 +1,61 @@
-<div>
-    <label>insert new movie :
-      <input placeholder="movie name" #movieName />
-    </label>
-    <button (click)="addMovie(movieName.value); movieName.value=''"> add </button>
+<div class="inner-div movie-insert">
+    <div class="label"><label>Insert new movie :</label></div>
+    <div class="input"><input placeholder="movie name" #movieName /></div>
+    <div class="button"><button (click)="addMovie(movieName.value); movieName.value=''"> add </button></div>
 </div>
 
+<hr>
 
-<div>
-    <label>insert new director :
-      <input placeholder="director name" #directorName />
-    </label>
-    <button (click)="addDirector(directorName.value); directorName.value=''"> add </button>
+<div class="other-inserts">
+
+  <div class="inner-div">
+      <div class="label"><label>Insert new director :</label></div>
+      <div class="input"><input placeholder="director name" #directorName /></div>
+      <div class="button"><button (click)="addDirector(directorName.value); directorName.value=''"> add </button></div>
+  </div>
+
+  <div class="inner-div">
+      <div class="label"><label>insert new studio :</label></div>
+        <div class="input"><input placeholder="studio name" #studioName /></div>
+      <div class="button"><button (click)="addStudio(studioName.value); studioName.value=''"> add </button></div>
+  </div>
+
+  <div class="inner-div">
+      <div class="label"><label>insert new actor :</label></div>
+        <div class="input"><input placeholder="actor name" #actorName /></div>
+      <div class="button"><button (click)="addActor(actorName.value); actorName.value=''"> add </button></div>
+  </div>
+
 </div>
 
-<div>
-  <label for="directors">Remove existing director:</label>
-  <select #selectedDirectorID>
-    <option *ngFor="let director of directors" [value]="director.id"> {{ director.name }} </option>
-  </select>
-  <button (click)="deleteDirector(selectedDirectorID.value); selectedDirectorID.value=''">remove</button>
+<hr>
+
+<div class="removals">
+
+  <div class="inner-div">
+    <div class="label"><label for="directors">Delete director:</label></div>
+    <div class="input"><select #selectedDirectorID>
+      <option *ngFor="let director of directors" [value]="director.id"> {{ director.name }} </option>
+    </select></div>
+    <div class="button"><button (click)="deleteDirector(selectedDirectorID.value); selectedDirectorID.value=''">remove</button></div>
+  </div>
+
+  <div class="inner-div">
+    <div class="label"><label for="studios">Delete studio:</label></div>
+    <div class="input"><select #selectedStudioID>
+      <option *ngFor="let studio of studios" [value]="studio.id"> {{ studio.name }} </option>
+    </select></div>
+    <div class="button"><button (click)="deleteStudio(selectedStudioID.value); selectedStudioID.value=''">remove</button></div>
+  </div>
+
+  <div class="inner-div">
+    <div class="label"><label for="actors">Delete actor:</label></div>
+    <div class="input"><select #selectedActorID>
+      <option *ngFor="let actor of actors" [value]="actor.id"> {{ actor.name }} </option>
+    </select></div>
+    <div class="button"><button (click)="deleteActor(selectedActorID.value); selectedActorID.value=''">remove</button></div>
+  </div>
+
 </div>
 
-<div>
-    <label>insert new studio :
-      <input placeholder="studio name" #studioName />
-    </label>
-    <button (click)="addStudio(studioName.value); studioName.value=''"> add </button>
-</div>
-
-<div>
-  <label for="studios">Remove existing studio:</label>
-  <select #selectedStudioID>
-    <option *ngFor="let studio of studios" [value]="studio.id"> {{ studio.name }} </option>
-  </select>
-  <button (click)="deleteStudio(selectedStudioID.value); selectedStudioID.value=''">remove</button>
-</div>
-
-<div>
-    <label>insert new actor :
-      <input placeholder="actor name" #actorName />
-    </label>
-    <button (click)="addActor(actorName.value); actorName.value=''"> add </button>
-</div>
-
-<div>
-  <label for="actors">Remove existing actor:</label>
-  <select #selectedActorID>
-    <option *ngFor="let actor of actors" [value]="actor.id"> {{ actor.name }} </option>
-  </select>
-  <button (click)="deleteActor(selectedActorID.value); selectedActorID.value=''">remove</button>
-</div>
+<hr>

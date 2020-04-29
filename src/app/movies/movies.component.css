@@ -9,20 +9,34 @@ button.clear {
     right: 26em;
 }
 
+button {
+    background-color: lavenderblush;
+    color: #5B2333;
+}
+
 div.selected {
-    background-color: brown;
-    width: 26em;
+    background-color: #5B2333;
+    color: #E94F37;
+    width: 25.5em;
     border-radius: 4px;
     padding: 1em;
     margin: 0.5em;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 div.not-selected {
-    background-color: chocolate;
+    background-color: #E94F37;
+    color: #5B2333;
     width: 25em;
     border-radius: 4px;
     padding: 1em;
     margin: 0.5em;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+div:hover {
+    width: 25.5em;
+    margin-left: 0em;
 }
 
 li {
@@ -39,7 +53,8 @@ li {
     padding: 1em;
     border-radius: 4px;
     border-style: solid;
-    border-color: crimson;
+    border-color: #E94F37;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #insertion-frame {
@@ -51,5 +66,6 @@ li {
     padding: 1em;
     border-radius: 4px;
     border-style: solid;
-    border-color: crimson;
+    border-color: #E94F37;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
