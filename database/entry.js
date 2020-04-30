@@ -1,5 +1,4 @@
-// to be fair, the back-end node.js script was inspired from Node + mysql template on web
-// but I know what I am doing ;)
+// standard script for configuring server and connection to DB. Go rather to route.js for SQL queries
 
 const express = require('express');
 const cors = require('cors');
@@ -10,7 +9,7 @@ const route = require('./routes');
 const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'm3lh0r0p0rtun1d4d3',
+  password : 'm3lh0r0p0rtun1d4d3', //      /!\
   database : 'moviereferences',
   multipleStatements: true
 });

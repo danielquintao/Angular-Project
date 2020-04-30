@@ -150,7 +150,12 @@ function createRouter(db) {
   router.get('/getmovies/:keyword?', function (req, res, next) {
      if(req.params.keyword) { 
       db.query(
-        'SELECT m.* FROM movies m, directors d, studios s, actors a, movies_actors m_a, movies_genres m_g, genres g WHERE (m.name LIKE ?) OR (m.director_id = d.id AND d.name LIKE ?) OR (m.studio_id = s.id AND s.name LIKE ?) OR (m_a.movie_id = m.id AND m_a.actor_id = a.id AND a.name LIKE ?) OR (m_g.movie_id = m.id AND m_g.genre_id = g.id AND g.name LIKE ?) GROUP BY m.id',
+        //'SELECT m.* FROM movies m, directors d, studios s, actors a, movies_actors m_a, movies_genres m_g, genres g WHERE (m.name LIKE ?) OR (m.director_id = d.id AND d.name LIKE ?) OR (m.studio_id = s.id AND s.name LIKE ?) OR (m_a.movie_id = m.id AND m_a.actor_id = a.id AND a.name LIKE ?) OR (m_g.movie_id = m.id AND m_g.genre_id = g.id AND g.name LIKE ?) GROUP BY m.id',
+        '(SELECT movies.* FROM movies INNER JOIN directors ON movies.director_id = directors.id WHERE directors.name LIKE ?) UNION'+
+        '(SELECT movies.* FROM movies INNER JOIN studios ON movies.studio_id = studios.id WHERE studios.name LIKE ?) UNION'+
+        '(SELECT m.* FROM movies m, movies_actors m_a, actors a WHERE m_a.movie_id = m.id AND m_a.actor_id = a.id AND a.name LIKE ?) UNION'+
+        '(SELECT m.* FROM movies m, movies_genres m_g, genres g WHERE m_g.movie_id = m.id AND m_g.genre_id = g.id AND g.name LIKE ?) UNION'+
+        '(SELECT m.* FROM movies m WHERE m.name LIKE ?)',
         ['%'+req.params.keyword+'%', '%'+req.params.keyword+'%', '%'+req.params.keyword+'%', '%'+req.params.keyword+'%', '%'+req.params.keyword+'%'],
         (error, results) => {
           if (error) {
