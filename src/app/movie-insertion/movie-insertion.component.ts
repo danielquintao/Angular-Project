@@ -30,74 +30,84 @@ export class MovieInsertionComponent implements OnInit {
     name = name.trim();
     if (!name) { return; } // blank name
     this.movieService.addMovie({ name } as Movie)
-      .subscribe();
-    this.updateDisplayedInfo.emit(true); 
+      .subscribe(result => {
+        this.updateDisplayedInfo.emit(true);
+      });
   }
 
   addDirector(name: string): void {
     name = name.trim();
     if (!name) { return; } // blank name
     this.movieService.addDirector({ name } as Director)
-      .subscribe();
-    this.updateDisplayedInfo.emit(true);
+      .subscribe(result => {
+        this.updateDisplayedInfo.emit(true);
+      });
   }
 
   deleteDirector(directorId: string): void {
-    this.movieService.deleteDirector(+directorId).subscribe();
-    this.updateDisplayedInfo.emit(true); 
+    this.movieService.deleteDirector(+directorId).subscribe(result => {
+      this.updateDisplayedInfo.emit(true);
+    });
   }
 
   deleteStudio(studioId: string): void {
-    this.movieService.deleteStudio(+studioId).subscribe();
-    this.updateDisplayedInfo.emit(true); 
+    this.movieService.deleteStudio(+studioId).subscribe(result => {
+      this.updateDisplayedInfo.emit(true);
+    });
   }
 
   deleteActor(actorId: string): void {
-    this.movieService.deleteActor(+actorId).subscribe();
-    this.updateDisplayedInfo.emit(true); 
+    this.movieService.deleteActor(+actorId).subscribe(result => {
+      this.updateDisplayedInfo.emit(true);
+    });
   }
 
   addStudio(name: string): void {
     name = name.trim();
     if (!name) { return; } // blank name
     this.movieService.addStudio({ name } as Studio)
-      .subscribe();
-    this.updateDisplayedInfo.emit(true); 
+      .subscribe(result => {
+        this.updateDisplayedInfo.emit(true);
+      });
   }
 
   addActor(name: string): void {
     name = name.trim();
     if (!name) { return; } // blank name
     this.movieService.addActor({ name } as Actor)
-      .subscribe();
-    this.updateDisplayedInfo.emit(true); 
+      .subscribe(result => {
+        this.updateDisplayedInfo.emit(true);
+      });
   }
 
   newDirectorName: string;
   renameDirector(id: string) {
     if(!this.newDirectorName.trim()) return;
     let director: Director = {id: +id, name: this.newDirectorName};
-    this.movieService.renameDirector(director).subscribe();
+    this.movieService.renameDirector(director).subscribe(result => {
+      this.updateDisplayedInfo.emit(true);
+    });
     this.newDirectorName = '';
-    this.updateDisplayedInfo.emit(true);
   }
 
   newStudioName: string;
   renameStudio(id: string) {
     if(!this.newStudioName.trim()) return;
     let studio: Studio = {id: +id, name: this.newStudioName};
-    this.movieService.renameStudio(studio).subscribe();
+    this.movieService.renameStudio(studio).subscribe(result => {
+      this.updateDisplayedInfo.emit(true);
+    });
     this.newStudioName = '';
-    this.updateDisplayedInfo.emit(true);
   }
 
   newActorName: string;
   renameActor(id: string) {
     if(!this.newActorName.trim()) return;
     let actor: Actor = {id: +id, name: this.newActorName};
-    this.movieService.renameActor(actor).subscribe();
+    this.movieService.renameActor(actor).subscribe(result => {
+      this.updateDisplayedInfo.emit(true);
+    });
     this.newActorName = '';
-    this.updateDisplayedInfo.emit(true);
   }
 
   ngOnInit(): void {
