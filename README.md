@@ -1,5 +1,7 @@
 # Projet Angular
 
+## Daniel Quintão de Moraes
+
 Ce repositoire présente mon logiciel pour gérer une base de données de cinéma avec Angular.
 Guide:
 
@@ -15,7 +17,7 @@ Il faut avoir Angular 9 mis à jour (la version de développement était 9.1.3),
 
 ### Base de Données
 
-J'ai mis un fichier .sql avec des instructions pour génerer la base de données. Vous pouvez ouvrir le terminal, se connecter à mysql (par exemple `mysql -u root -p` ) et éxecuter directement le fichier comme source, ou quelque autre façon.
+J'ai mis un fichier .sql (generateDatabase.sql, dossier racine) avec des instructions pour génerer la base de données. Vous pouvez ouvrir le terminal, se connecter à mysql (par exemple `mysql -u root -p` ) et éxecuter directement le fichier comme source, ou quelque autre façon.
 
 Ensuite, aller au dossier `database/entry.js` et changer les configurations de la base de données (mettre ses propres infos, comme mot de passe etc).
 
